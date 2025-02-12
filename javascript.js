@@ -7,22 +7,10 @@ function getComputerChoice() {
      return choices[answer];
 }
 
-function getHumanChoice () {
-    let x = parseInt(prompt("Please choose a number between 1 and 3"));
 
-    if (x < 1 || x > 3 || isNaN(x)) {
-        alert("Invalid choice! Please enter 1, 2, or 3.");
-        return getHumanChoice(); // Ask again if input is invalid
-    }
-
-    return choices[x - 1];
-}
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
 function playRound (humanSelection, computerSelection) {
-    
+
         // Checking for valid inputs
         const validChoices = ["rock", "paper", "scissors"];
         if (!validChoices.includes(humanSelection)) {
@@ -43,6 +31,21 @@ function playRound (humanSelection, computerSelection) {
         }
     }
     
-    console.log(playRound(humanSelection, computerSelection));
+
+    const rock = document.querySelector("#btn-R");
+    const paper = document.querySelector("#btn-P");
+    const scissors = document.querySelector("#btn-S");
+
+    rock.addEventListener("click", () => 
+        console.log(playRound("rock", getComputerChoice())));
+
+    paper.addEventListener("click", () => {
+        console.log(playRound("paper", getComputerChoice()));
+    });
+    
+    scissors.addEventListener("click", () => {
+        console.log(playRound("scissors", getComputerChoice()));
+    });
+
 
     
